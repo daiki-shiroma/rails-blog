@@ -1,0 +1,41 @@
+<h1>Blogs#show</h1>
+<p>Find me in app/views/blogs/show.html.erb</p>
+
+<h2><%= @blog.title %></h2>
+
+<p><%= @blog.contents %></p>
+
+<p>この記事は<%= @user.username %>によって投稿されました。</p>
+
+<%= link_to "編集", edit_blog_path(@blog) %>
+<%= link_to "削除", blog_path(@blog), method: :delete, data: {confirm: "本当に削除しますか？"} %>
+
+</br>
+</br>
+</br>
+
+<p>このブログのidは<%= @blog.id %></p>
+
+<div>
+<% if current_user %>
+ <%= form_with(model: [@blog, @comment], local: true) do |form| %>
+    <%= form.text_area:content, placeholder: "コメントする"%>
+    <%= form.submit "SEND" %>
+    <% end %>
+    <% end %>
+
+<div>
+
+ <h2>コメント一覧</h2>
+ <% if @comments %>
+ <% @comments.each do |comment| %>
+    <p>
+    <%= link_to comment.user.username, user_path(comment.user_id)%>
+    <%= comment.content %>
+    </p>
+ <% end %>
+ <% end %>
+</div>
+</div>
+    
+

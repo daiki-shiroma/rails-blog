@@ -1,0 +1,15 @@
+<h1>Comments#new</h1>
+<p>Find me in app/views/comments/new.html.erb</p>
+
+
+<%= form_for(@comment) do |f| %>
+
+<%= f.label :title, "コメント" %>
+<%= f.text_field :content %>
+
+
+
+<%= f.submit %>
+
+<% end %>
+<p>このブログのidは<%= @blog.id %>です。</p>
